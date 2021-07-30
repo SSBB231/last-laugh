@@ -1,4 +1,5 @@
 import 'antd/dist/antd.css';
+import './App.css';
 import { useState, useEffect } from 'react';
 import _ from 'lodash';
 
@@ -18,8 +19,10 @@ const App = () => {
   async function getSubredditListings() {
     const result = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?limit=20`);
     const jsonData = await result.json();
+
+    const posts = _.get(jsonData, 'data.children', [])
     setState({
-      posts: _.orderBy(jsonData.data.children, 'data.num_comments', 'desc')
+      posts: _.orderBy(posts, 'data.num_comments', 'desc')
     });
   };
 
@@ -29,8 +32,9 @@ const App = () => {
 
   return (
     <Layout>
-      <Header><h3 style={{color: 'white'}}>Last Laugh - Reddit For Programmers</h3></Header>
-      <Content>
+      <Header><h3 style={{color: 'white', textAlign: 'center'}}>Last Laugh - Reddit Client</h3></Header>
+      <Content 
+        className="px-4 white-background">
         <Posts posts={state.posts}/>
       </Content>
     </Layout>

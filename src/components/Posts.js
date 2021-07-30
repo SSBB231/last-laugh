@@ -1,8 +1,8 @@
 import React from 'react';
-import { List } from 'antd';
-import '../css/posts.css'
-
+import { List, Typography } from 'antd';
 import Post from './Post';
+
+const { Title } = Typography;
 
 const Posts = props => {
 
@@ -19,7 +19,8 @@ const Posts = props => {
             itemLayout="vertical"
             dataSource={posts}
             renderItem={renderItem}
-            className="px-4"
+            header={<Title level={5} style={{textAlign: 'center'}}>Top - ProgrammerHumor</Title>}
+            split={false}
         />
     );
 };
