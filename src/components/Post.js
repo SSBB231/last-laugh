@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Typography } from 'antd';
+import { ArrowUpOutlined } from '@ant-design/icons';
 import _ from 'lodash';
 
 const { Link, Title } = Typography;
@@ -15,7 +16,7 @@ const Post = props => {
                         {title}
                     </Link>
                 )}
-            extra={<Title level={4}>{ ups }</Title>}
+            extra={<Title level={4}><ArrowUpOutlined />{ ups }</Title>}
             bordered={false}
             style={{maxWidth:'50em', margin: 'auto'}}>
             <strong>Author</strong><p>{ author }</p>
